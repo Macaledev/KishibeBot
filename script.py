@@ -3,7 +3,6 @@ from discord.ext import tasks
 from discord import app_commands
 import datetime
 from zoneinfo import ZoneInfo
-from dotenv import load_dotenv
 
 TOKEN = os.environ.get("DISCORD_TOKEN")
 PARIS_TZ = ZoneInfo("Europe/Paris")
@@ -105,5 +104,6 @@ async def reminder_loop():
     # rappel heures spécifiques
     if now.minute == 0 and now.hour in config["claim_hours"]:
         await channel.send(f"{mention_text} {config['claim_message']}")
+
 
 client.run(TOKEN)
